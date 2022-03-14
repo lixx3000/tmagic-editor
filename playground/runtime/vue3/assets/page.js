@@ -1,7 +1,7 @@
-import { A as App } from "./resetcss.6badd0fa.js";
-import { _ as _export_sfc, g as getUrlParam } from "./plugin-vue_export-helper.8125903f.js";
+import { A as App } from "./resetcss.23646bea.js";
+import { _ as _export_sfc, g as getUrlParam } from "./plugin-vue_export-helper.75d50012.js";
 import { e as entry } from "./components.js";
-import { a as axios } from "./vendor.65fb7a50.js";
+import { a as axios } from "./vendor.f6f849d8.js";
 const getLocalConfig = () => {
   const configStr = localStorage.getItem("magicUiConfig");
   if (!configStr)
