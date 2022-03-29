@@ -1,8 +1,8 @@
 var page = {
   items: [],
   style: {
-    width: "375",
-    height: "728"
+    width: "100%",
+    height: "100%"
   }
 };
 var container = {
