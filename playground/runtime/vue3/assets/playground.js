@@ -1,6 +1,5 @@
-import { A as App$1 } from "./resetcss.23646bea.js";
-import { a as getNodePath, _ as _export_sfc } from "./plugin-vue_export-helper.75d50012.js";
-import "./vendor.f6f849d8.js";
+import { A as App$1 } from "./resetcss.e39ac995.js";
+import { a as getNodePath, _ as _export_sfc } from "./plugin-vue_export-helper.adee6e2f.js";
 var playground_html_htmlProxy_index_0 = "";
 const scriptRel = "modulepreload";
 const seen = {};
@@ -30,7 +29,7 @@ const __vitePreload = function preload(baseModule, deps) {
     if (isCss) {
       return new Promise((res, rej) => {
         link.addEventListener("load", res);
-        link.addEventListener("error", rej);
+        link.addEventListener("error", () => rej(new Error(`Unable to preload CSS for ${dep}`)));
       });
     }
   })).then(() => baseModule());
