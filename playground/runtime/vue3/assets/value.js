@@ -16,8 +16,6 @@ var button = {
   text: "\u8BF7\u8F93\u5165\u6587\u672C\u5185\u5BB9",
   multiple: true,
   style: {
-    position: "absolute",
-    left: "57",
     width: "270",
     height: "37.5",
     border: 0,
@@ -29,8 +27,6 @@ var text = {
   text: "\u8BF7\u8F93\u5165\u6587\u672C\u5185\u5BB9",
   multiple: true,
   style: {
-    position: "absolute",
-    left: "57",
     width: "100",
     height: "auto"
   }
