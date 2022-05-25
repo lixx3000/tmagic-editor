@@ -49,12 +49,30 @@ var text = [
     type: "switch"
   }
 ];
+var img = [
+  {
+    text: "\u56FE\u7247",
+    name: "src"
+  },
+  {
+    text: "\u94FE\u63A5",
+    name: "url"
+  }
+];
+var qrcode = [
+  {
+    text: "\u94FE\u63A5",
+    name: "url"
+  }
+];
 (function() {
   const configs = {
     "page": page,
     "container": container,
     "button": button,
-    "text": text
+    "text": text,
+    "img": img,
+    "qrcode": qrcode
   };
   window.magicPresetConfigs = configs;
 })();

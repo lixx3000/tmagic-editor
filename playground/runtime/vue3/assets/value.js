@@ -31,12 +31,33 @@ var text = {
     height: "auto"
   }
 };
+var img = {
+  src: "https://puui.qpic.cn/vupload/0/1573555382625_bhp0wud8l6w.png/0",
+  url: "",
+  style: {
+    position: "absolute",
+    left: "57",
+    width: "176",
+    height: "176"
+  }
+};
+var qrcode = {
+  url: "https://m.film.qq.com",
+  style: {
+    position: "absolute",
+    left: "57",
+    width: "176",
+    height: "176"
+  }
+};
 (function() {
   const values = {
     "page": page,
     "container": container,
     "button": button,
-    "text": text
+    "text": text,
+    "img": img,
+    "qrcode": qrcode
   };
   window.magicPresetValues = values;
 })();
