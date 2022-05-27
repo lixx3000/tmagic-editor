@@ -65,6 +65,7 @@ var qrcode = [
     name: "url"
   }
 ];
+var overlay = [];
 (function() {
   const configs = {
     "page": page,
@@ -72,7 +73,8 @@ var qrcode = [
     "button": button,
     "text": text,
     "img": img,
-    "qrcode": qrcode
+    "qrcode": qrcode,
+    "overlay": overlay
   };
   window.magicPresetConfigs = configs;
 })();

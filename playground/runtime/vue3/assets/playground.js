@@ -57,6 +57,9 @@ const _sfc_main = Vue.defineComponent({
     Vue.onMounted(() => {
       var _a;
       (_a = window.magic) == null ? void 0 : _a.onRuntimeReady({
+        getApp() {
+          return app;
+        },
         updateRootConfig(config) {
           console.log("update config", config);
           root.value = config;

@@ -50,6 +50,17 @@ var qrcode = {
     height: "176"
   }
 };
+var overlay = {
+  style: {
+    position: "fixed",
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.8)"
+  },
+  items: []
+};
 (function() {
   const values = {
     "page": page,
@@ -57,7 +68,8 @@ var qrcode = {
     "button": button,
     "text": text,
     "img": img,
-    "qrcode": qrcode
+    "qrcode": qrcode,
+    "overlay": overlay
   };
   window.magicPresetValues = values;
 })();

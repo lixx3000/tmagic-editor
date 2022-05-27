@@ -29,7 +29,7 @@ var useApp = (props) => {
   });
   return app;
 };
-const _sfc_main$6 = Vue.defineComponent({
+const _sfc_main$7 = Vue.defineComponent({
   name: "magic-ui-page",
   props: {
     config: {
@@ -43,7 +43,7 @@ const _sfc_main$6 = Vue.defineComponent({
     }
   }
 });
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_magic_ui_container = Vue.resolveComponent("magic-ui-container");
   return Vue.openBlock(), Vue.createBlock(_component_magic_ui_container, {
     class: "magic-ui-page",
@@ -55,16 +55,8 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["config"]);
 }
-var page = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5]]);
-var useCommonMethod = (props) => ({
-  show: () => {
-    props.config.style.display = "initial";
-  },
-  hide: () => {
-    props.config.style.display = "none";
-  }
-});
-const _sfc_main$5 = Vue.defineComponent({
+var page = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6]]);
+const _sfc_main$6 = Vue.defineComponent({
   name: "magic-ui-component",
   props: {
     config: {
@@ -75,9 +67,9 @@ const _sfc_main$5 = Vue.defineComponent({
   setup(props) {
     var _a;
     const vm = (_a = Vue.getCurrentInstance()) == null ? void 0 : _a.proxy;
-    const app = useApp(props);
+    const app = Vue.inject("app");
     Vue.provide("hoc", vm);
-    return __spreadValues({
+    return {
       tagName: Vue.computed(() => `magic-ui-${toLine(props.config.type)}`),
       style: Vue.computed(() => app == null ? void 0 : app.transformStyle(props.config.style)),
       display: () => {
@@ -88,10 +80,10 @@ const _sfc_main$5 = Vue.defineComponent({
         }
         return displayCfg !== false;
       }
-    }, useCommonMethod(props));
+    };
   }
 });
-function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.display() ? (Vue.openBlock(), Vue.createBlock(Vue.resolveDynamicComponent(_ctx.tagName), {
     key: 0,
     id: _ctx.config.id,
@@ -100,8 +92,16 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     config: _ctx.config
   }, null, 8, ["id", "class", "style", "config"])) : Vue.createCommentVNode("", true);
 }
-var Component = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4]]);
-const _sfc_main$4 = Vue.defineComponent({
+var Component = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5]]);
+var useCommonMethod = (props) => ({
+  show: () => {
+    props.config.style.display = "initial";
+  },
+  hide: () => {
+    props.config.style.display = "none";
+  }
+});
+const _sfc_main$5 = Vue.defineComponent({
   name: "magic-ui-container",
   components: {
     "magic-ui-component": Component
@@ -128,7 +128,7 @@ const _sfc_main$4 = Vue.defineComponent({
   }
 });
 const _hoisted_1$2 = ["id"];
-function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_magic_ui_component = Vue.resolveComponent("magic-ui-component");
   return _ctx.display() ? (Vue.openBlock(), Vue.createElementBlock("div", {
     key: 0,
@@ -145,8 +145,8 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
     }), 128))
   ], 14, _hoisted_1$2)) : Vue.createCommentVNode("", true);
 }
-var container = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3]]);
-const _sfc_main$3 = Vue.defineComponent({
+var container = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4]]);
+const _sfc_main$4 = Vue.defineComponent({
   name: "magic-ui-button",
   props: {
     config: {
@@ -160,6 +160,7 @@ const _sfc_main$3 = Vue.defineComponent({
   },
   setup(props) {
     var _a;
+    useApp(props);
     const vm = (_a = Vue.getCurrentInstance()) == null ? void 0 : _a.proxy;
     const actions = Vue.reactive([]);
     const actualActions = Vue.computed(() => [
@@ -196,7 +197,7 @@ const _sfc_main$3 = Vue.defineComponent({
     };
   }
 });
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_magic_ui_text = Vue.resolveComponent("magic-ui-text");
   return Vue.openBlock(), Vue.createElementBlock("button", {
     class: "magic-ui-button",
@@ -207,8 +208,8 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ]);
 }
-var button = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2]]);
-const _sfc_main$2 = Vue.defineComponent({
+var button = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3]]);
+const _sfc_main$3 = Vue.defineComponent({
   name: "magic-ui-text",
   props: {
     config: {
@@ -226,6 +227,7 @@ const _sfc_main$2 = Vue.defineComponent({
   },
   setup(props) {
     var _a;
+    useApp(props);
     const vm = (_a = Vue.getCurrentInstance()) == null ? void 0 : _a.proxy;
     const hoc = Vue.inject("hoc");
     const displayText = Vue.computed(() => {
@@ -262,7 +264,7 @@ const _sfc_main$2 = Vue.defineComponent({
     }, this.displayText ? { innerHTML: this.displayText } : {}));
   }
 });
-const _sfc_main$1 = Vue.defineComponent({
+const _sfc_main$2 = Vue.defineComponent({
   name: "magic-ui-img",
   props: {
     config: {
@@ -275,6 +277,7 @@ const _sfc_main$1 = Vue.defineComponent({
     }
   },
   setup(props) {
+    useApp(props);
     return {
       clickHandler() {
         window.location.href = props.config.url;
@@ -283,14 +286,14 @@ const _sfc_main$1 = Vue.defineComponent({
   }
 });
 const _hoisted_1$1 = ["src"];
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
   return Vue.openBlock(), Vue.createElementBlock("img", {
     class: "magic-ui-img",
     src: _ctx.config.src,
     onClick: _cache[0] || (_cache[0] = (...args) => _ctx.clickHandler && _ctx.clickHandler(...args))
   }, null, 8, _hoisted_1$1);
 }
-var img = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+var img = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
 var browser = {};
 var canPromise$1 = function() {
   return typeof Promise === "function" && Promise.prototype && Promise.prototype.then;
@@ -2281,7 +2284,7 @@ browser.toDataURL = renderCanvas.bind(null, CanvasRenderer.renderToDataURL);
 browser.toString = renderCanvas.bind(null, function(data, _, opts) {
   return SvgRenderer.render(data, opts);
 });
-const _sfc_main = Vue.defineComponent({
+const _sfc_main$1 = Vue.defineComponent({
   name: "magic-ui-qrcode",
   props: {
     config: {
@@ -2294,6 +2297,7 @@ const _sfc_main = Vue.defineComponent({
     }
   },
   setup(props) {
+    useApp(props);
     const imgUrl = Vue.ref();
     Vue.watch(() => props.config.url, (url = "") => {
       browser.toDataURL(url, (e, url2) => {
@@ -2310,20 +2314,78 @@ const _sfc_main = Vue.defineComponent({
   }
 });
 const _hoisted_1 = ["src"];
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return Vue.openBlock(), Vue.createElementBlock("img", {
     class: "magic-ui-qrcode",
     src: _ctx.imgUrl
   }, null, 8, _hoisted_1);
 }
-var qrcode = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+var qrcode = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+const _sfc_main = Vue.defineComponent({
+  name: "magic-ui-overlay",
+  props: {
+    config: {
+      type: Object,
+      default: () => ({})
+    },
+    model: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  setup(props) {
+    var _a;
+    const visible = Vue.ref(false);
+    const app = useApp(props);
+    const node = (_a = app == null ? void 0 : app.page) == null ? void 0 : _a.getNode(props.config.id);
+    const openOverlay = () => {
+      visible.value = true;
+      if (app) {
+        app.emit("overlay:open", node);
+      }
+    };
+    const closeOverlay = () => {
+      visible.value = false;
+      if (app) {
+        app.emit("overlay:close", node);
+      }
+    };
+    app == null ? void 0 : app.on("editor:select", (info, path) => {
+      if (path.find((node2) => node2.id === props.config.id)) {
+        openOverlay();
+      } else {
+        closeOverlay();
+      }
+    });
+    return {
+      visible,
+      openOverlay,
+      closeOverlay
+    };
+  }
+});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_magic_ui_container = Vue.resolveComponent("magic-ui-container");
+  return _ctx.visible ? (Vue.openBlock(), Vue.createBlock(_component_magic_ui_container, {
+    key: 0,
+    class: "magic-ui-overlay",
+    config: { items: _ctx.config.items }
+  }, {
+    default: Vue.withCtx(() => [
+      Vue.renderSlot(_ctx.$slots, "default")
+    ]),
+    _: 3
+  }, 8, ["config"])) : Vue.createCommentVNode("", true);
+}
+var overlay = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 const components = {
   "page": page,
   "container": container,
   "button": button,
-  "text": _sfc_main$2,
+  "text": _sfc_main$3,
   "img": img,
-  "qrcode": qrcode
+  "qrcode": qrcode,
+  "overlay": overlay
 };
 const plugins = {};
 const entry = {
