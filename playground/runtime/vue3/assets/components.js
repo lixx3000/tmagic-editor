@@ -14,49 +14,8 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-import { _ as _export_sfc, t as toLine } from "./plugin-vue_export-helper.adee6e2f.js";
-var useApp = (props) => {
-  var _a, _b;
-  const app = Vue.inject("app");
-  const node = (_a = app == null ? void 0 : app.page) == null ? void 0 : _a.getNode(props.config.id);
-  const vm = (_b = Vue.getCurrentInstance()) == null ? void 0 : _b.proxy;
-  node == null ? void 0 : node.emit("created", vm);
-  Vue.onMounted(() => {
-    node == null ? void 0 : node.emit("mounted", vm);
-  });
-  Vue.onUnmounted(() => {
-    node == null ? void 0 : node.emit("destroy", vm);
-  });
-  return app;
-};
+import { t as toLine, _ as _export_sfc } from "./plugin-vue_export-helper.adee6e2f.js";
 const _sfc_main$7 = Vue.defineComponent({
-  name: "magic-ui-page",
-  props: {
-    config: {
-      type: Object,
-      defautl: () => ({})
-    }
-  },
-  setup(props) {
-    if (props.config) {
-      useApp(props);
-    }
-  }
-});
-function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_magic_ui_container = Vue.resolveComponent("magic-ui-container");
-  return Vue.openBlock(), Vue.createBlock(_component_magic_ui_container, {
-    class: "magic-ui-page",
-    config: _ctx.config
-  }, {
-    default: Vue.withCtx(() => [
-      Vue.renderSlot(_ctx.$slots, "default")
-    ]),
-    _: 3
-  }, 8, ["config"]);
-}
-var page = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6]]);
-const _sfc_main$6 = Vue.defineComponent({
   name: "magic-ui-component",
   props: {
     config: {
@@ -83,7 +42,7 @@ const _sfc_main$6 = Vue.defineComponent({
     };
   }
 });
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.display() ? (Vue.openBlock(), Vue.createBlock(Vue.resolveDynamicComponent(_ctx.tagName), {
     key: 0,
     id: _ctx.config.id,
@@ -92,7 +51,60 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     config: _ctx.config
   }, null, 8, ["id", "class", "style", "config"])) : Vue.createCommentVNode("", true);
 }
-var Component = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5]]);
+var Component = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6]]);
+var useApp = (props) => {
+  var _a, _b;
+  const app = Vue.inject("app");
+  const node = (_a = app == null ? void 0 : app.page) == null ? void 0 : _a.getNode(props.config.id);
+  const vm = (_b = Vue.getCurrentInstance()) == null ? void 0 : _b.proxy;
+  node == null ? void 0 : node.emit("created", vm);
+  Vue.onMounted(() => {
+    node == null ? void 0 : node.emit("mounted", vm);
+  });
+  Vue.onUnmounted(() => {
+    node == null ? void 0 : node.emit("destroy", vm);
+  });
+  return app;
+};
+const _sfc_main$6 = Vue.defineComponent({
+  name: "magic-ui-page",
+  components: {
+    "magic-ui-component": Component
+  },
+  props: {
+    config: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  setup(props) {
+    const app = useApp(props);
+    return {
+      style: Vue.computed(() => app == null ? void 0 : app.transformStyle(props.config.style || {})),
+      refresh() {
+        window.location.reload();
+      }
+    };
+  }
+});
+const _hoisted_1$3 = ["id"];
+function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_magic_ui_component = Vue.resolveComponent("magic-ui-component");
+  return Vue.openBlock(), Vue.createElementBlock("div", {
+    id: `${_ctx.config.id || ""}`,
+    class: Vue.normalizeClass(`magic-ui-page${_ctx.config.className ? ` ${_ctx.config.className}` : ""}`),
+    style: Vue.normalizeStyle(_ctx.style)
+  }, [
+    Vue.renderSlot(_ctx.$slots, "default"),
+    (Vue.openBlock(true), Vue.createElementBlock(Vue.Fragment, null, Vue.renderList(_ctx.config.items, (item) => {
+      return Vue.openBlock(), Vue.createBlock(_component_magic_ui_component, {
+        key: item.id,
+        config: item
+      }, null, 8, ["config"]);
+    }), 128))
+  ], 14, _hoisted_1$3);
+}
+var page = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5]]);
 var useCommonMethod = (props) => ({
   show: () => {
     props.config.style.display = "initial";
@@ -280,7 +292,8 @@ const _sfc_main$2 = Vue.defineComponent({
     useApp(props);
     return {
       clickHandler() {
-        window.location.href = props.config.url;
+        if (props.config.url)
+          window.location.href = props.config.url;
       }
     };
   }

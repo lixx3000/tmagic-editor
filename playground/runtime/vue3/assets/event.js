@@ -1,3 +1,11 @@
+var page = {
+  methods: [
+    {
+      label: "\u5237\u65B0\u9875\u9762",
+      value: "refresh"
+    }
+  ]
+};
 var overlay = {
   methods: [
     {
@@ -22,6 +30,7 @@ var overlay = {
 };
 (function() {
   const events = {
+    "page": page,
     "overlay": overlay
   };
   window.magicPresetEvents = events;
